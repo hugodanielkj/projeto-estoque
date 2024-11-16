@@ -6,11 +6,11 @@ class Cliente{
     HistoricoDeCompra _historico;
 
   public:
-    Cliente(){};
+    Cliente();
 
     //Gets
-    std::string getNome(){}
+    std::string getNome();
 
     //Sets
-    void Cliente::setNome(std::string nome){}
+    void Cliente::setNome(std::string nome);
 };

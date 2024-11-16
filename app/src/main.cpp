@@ -7,7 +7,7 @@ int main(){
   std::cout << "Iniciando programa." << std::endl;
   View view;
   view.showMenu();
-  Estoque estoque = Estoque();
+  Estoque estoque;
   estoque.exibir();
   return 0;
 }

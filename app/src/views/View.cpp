@@ -6,7 +6,7 @@ void View::showMessage(const std::string& message){
   std::cout << message << std::endl;
 }
 void View::showMenu(){
-  std::cout << "Escolha uma opcao:" << std::endl;
+  std::cout << "Menu de acoes:" << std::endl;
   std::cout << "1. Exibir estoque." << std::endl;
   std::cout << "2. Adicionar uma roupa ao estoque." << std::endl;
   std::cout << "3. Alterar a quantidade de pecas de um produto." << std::endl;
