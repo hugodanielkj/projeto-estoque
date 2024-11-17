@@ -1,6 +1,5 @@
 #include "View.h"
 #include <iostream>
-#include <string>
 
 void View::showMessage(const std::string& message){
   std::cout << message << std::endl;
