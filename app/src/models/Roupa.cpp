@@ -1,11 +1,7 @@
 #include "Roupa.h"
 #include <iostream>
 
-Roupa::Roupa(std::string nome, int quantidade, std::string tamanho){
-  _nome = nome;
-  _quantidade = quantidade;
-  _tamanho = tamanho;
-}
+Roupa::Roupa(){};
 
 //Gets
 std::string Roupa::getNome(){ return _nome; }
@@ -29,3 +25,8 @@ void Roupa::setQuantidade(int quantidade){
 
 void Roupa::setTamanho(std::string tamanho){ _tamanho = tamanho; }
 
+void Roupa::criarRoupa(std::string nome, int quantidade, std::string tamanho){
+  _nome = nome;
+  _quantidade = quantidade;
+  _tamanho = tamanho;
+}

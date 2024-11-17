@@ -1,3 +1,6 @@
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
+
 #include "../views/View.h"
 #include "../models/Model.h"
 
@@ -8,5 +11,7 @@ class Controller{
   
   public:
     Controller(View& view, Model& model);
-    void Controller::run();
+    void run();
 };
+
+#endif // CONTROLLER_H

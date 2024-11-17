@@ -1,3 +1,6 @@
+#ifndef VIEW_H
+#define VIEW_H
+
 #include <string>
 
 class View{
@@ -6,3 +9,5 @@ class View{
     void showMenu();
     void askForDetails(std::string nome, int quantidade, std::string tamanho);
 };
+
+#endif // VIEW_H

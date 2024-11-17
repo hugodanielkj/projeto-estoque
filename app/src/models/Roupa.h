@@ -1,3 +1,6 @@
+#ifndef ROUPA_H
+#define ROUPA_H
+
 #include <string>
 
 class Roupa{
@@ -7,7 +10,7 @@ class Roupa{
     std::string _tamanho;
 
   public:
-    Roupa(std::string nome, int quantidade, std::string tamanho);
+    Roupa();
 
     //Gets
     std::string getNome();
@@ -19,4 +22,8 @@ class Roupa{
     void setQuantidade(int quantidade);
     void setTamanho(std::string tamanho);
 
+    //Methods
+    void criarRoupa(std::string nome, int quantidade, std::string tamanho);
 };
+
+#endif // ROUPA_H
