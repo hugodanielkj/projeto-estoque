@@ -2,7 +2,6 @@
 #define ESTOQUE_H
 
 #include <sqlite3.h>
-#include <iostream>
 #include <string>
 
 class Estoque{

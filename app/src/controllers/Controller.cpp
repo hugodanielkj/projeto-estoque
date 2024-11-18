@@ -7,8 +7,12 @@
 Controller::Controller(View& view, Model& model){ _view = view; _model = model; }
 
 void Controller::run(){
+  //Avisar sobre clientes aniversariantes
+  _model._clientes.exibirAniversariantes("03/03/03");
+
   int choice;
     do {
+      //Controller inicia:
       _view.showMenu();
       _view.showMessage("Escolha uma opcao: ");
       std::cin >> choice;

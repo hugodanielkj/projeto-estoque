@@ -6,6 +6,7 @@
 class Cliente{
   private:
     std::string _nome;
+    std::string _aniversario;
     //HistoricoDeCompra _historico;
 
   public:
@@ -13,6 +14,7 @@ class Cliente{
 
     //Gets
     std::string getNome();
+    std::string getAniversario();
 
     //Sets
     void setNome(std::string nome);
