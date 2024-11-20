@@ -1,7 +1,9 @@
 #include "Estoque.h"
 #include <iostream>
 
-Estoque::Estoque(){
+Estoque::Estoque(){}
+
+void Estoque::conectarAoBanco(){
   std::cout << "Preparando para conectar com o estoque..." << std::endl;
   const std::string DB_PATH = "/home/hugo/projeto-estoque/app/src/data/estoque.db"; 
 
@@ -14,8 +16,9 @@ Estoque::Estoque(){
   }
 }
 
-void Estoque::adicionarRoupa(const std::string nome, const int quantidade, const std::string tamanho){
-  std::string sql = "INSERT INTO estoque VALUES(" + nome + ", " + std::to_string(quantidade) +", " + tamanho + ")";
+void Estoque::adicionarRoupa(const Roupa roupa){
+  //int id = sqlite3_last_insert_rowid(_db) + 1; (descobrir por que nao funcionava)
+  std::string sql = "INSERT INTO estoque (nome, quantidade, tamanho) VALUES('" + roupa._nome + "', " + std::to_string(roupa._quantidade) +", '" + roupa._tamanho + "');";
 
   char* mensagemErro = nullptr;
   int exit = sqlite3_exec(_db, sql.c_str(), 0, 0, &mensagemErro);

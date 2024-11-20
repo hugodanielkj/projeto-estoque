@@ -3,6 +3,7 @@
 
 #include <sqlite3.h>
 #include <string>
+#include "Roupa.h"
 
 class Estoque{
   private:
@@ -10,7 +11,8 @@ class Estoque{
 
   public:
     Estoque();
-    void adicionarRoupa(const std::string nome, const int quantidade, const std::string tamanho);
+    void conectarAoBanco();
+    void adicionarRoupa(const Roupa roupa);
     void alterarQuantidadeNumaRoupa(const std::string nome, const int valor_a_somar);
     void exibir();
     void organizar();

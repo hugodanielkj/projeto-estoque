@@ -4,12 +4,11 @@
 #include <string>
 
 class Roupa{
-  private:
+  public:
     std::string _nome;
     int _quantidade;
     std::string _tamanho;
 
-  public:
     Roupa();
 
     //Gets
@@ -23,7 +22,7 @@ class Roupa{
     void setTamanho(std::string tamanho);
 
     //Methods
-    void criarRoupa(std::string nome, int quantidade, std::string tamanho);
+    int criarRoupa(std::string nome, int quantidade, std::string tamanho);
 };
 
 #endif // ROUPA_H

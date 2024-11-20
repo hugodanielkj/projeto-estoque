@@ -8,8 +8,8 @@ Controller::Controller(View& view, Model& model){ _view = view; _model = model; 
 
 void Controller::run(){
   //Avisar sobre clientes aniversariantes
-  _model._clientes.exibirAniversariantes("03/03/03");
-
+  _model._clientes.exibirAniversariantes("14/05/2014");
+  std::cout << "teste" << std::endl;
   int choice;
     do {
       //Controller inicia:
@@ -21,19 +21,27 @@ void Controller::run(){
       {
       case 1:{
         _model._estoque.exibir();
+        break;
       }
       case 2:{
-        std::string nome, tamanho;
-        int quantidade;
-        _view.askForDetails(nome, quantidade, tamanho);
-        _model._roupa.criarRoupa(nome, quantidade, tamanho);  //Sem funcionalidade, precisa ser incluida no estoque
-        _model._estoque.adicionarRoupa(nome, quantidade, tamanho);
+        std::string nome, tamanho; int quantidade;
+        _view.askForDetails(nome, quantidade, tamanho);   //Seta valores para nome, quantidade, tamanho via terminal
+        Roupa roupa(_model._roupa);
+        if(roupa.criarRoupa(nome, quantidade, tamanho) != 0){   //Retorna 0 a nova roupa foi criada
+          std::cout << "Nao foi possivel inserir nova roupa." << std::endl;
+          break;
+        }
+        //std::cout << roupa._nome << roupa._quantidade << roupa._tamanho << std::endl;
+        _model._estoque.adicionarRoupa(roupa);
         break;
       }
+      case 4:{
+        _model._clientes.exibirAniversariantes("14/05/2014");
         break;
+      }
       default:
         break;
       }
 
-    } while (choice != 3);
+    } while (choice != 5);
 }

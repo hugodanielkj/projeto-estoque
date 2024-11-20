@@ -1,7 +1,10 @@
 #include "Clientes.h"
 #include <iostream>
 
-Clientes::Clientes(){
+Clientes::Clientes(){}
+
+void Clientes::conectarAoBanco(){
+  std::cout << "Preparando para conectar com clientes(bd)...\n";
   const std::string DB_PATH = "/home/hugo/projeto-estoque/app/src/data/clientes.db";
   
   int exit = sqlite3_open(DB_PATH.c_str(), &_db);
@@ -9,7 +12,7 @@ Clientes::Clientes(){
     std::cerr << "Erro ao abrir banco de dados clientes: " << sqlite3_errmsg(_db) << std::endl;
     _db = nullptr;
   } else {
-    std:: cout << "Sucesso ao conectar ao banco de dados clientes!";
+    std:: cout << "Conexao estabelecida com sucesso.\n";
   }
 }
 
@@ -17,7 +20,7 @@ void Clientes::adicionarCliente(){
   std::string sql = "INSERT INTO clientes VALUES(?, ?);";
 
   std::string nome = "teste";
-  std::string aniversario = "03/03/03";
+  std::string aniversario = "14/05/2014";
 
   sqlite3_stmt* stmt;
   if(sqlite3_prepare_v2(_db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK){
@@ -39,10 +42,11 @@ void Clientes::adicionarCliente(){
 }
 
 void Clientes::exibirAniversariantes(std::string data_hoje){
-  std::string sql = "SELECT nome FROM clientes WHERE aniversario = "+ data_hoje +";";
+  std::cout << "sucesso ao entrar na funcao exibir aniversariantes." << std::endl;
+  std::string sql = "SELECT nome FROM clientes WHERE aniversario = '"+ data_hoje +"';";
 
   sqlite3_stmt* stmt;
-  if(sqlite3_prepare16_v2(_db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK){
+  if(sqlite3_prepare_v2(_db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK){
     std::cerr << "Erro ao fazer insercao: " << sqlite3_errmsg(_db) << std::endl;
     return;
   }
@@ -51,7 +55,7 @@ void Clientes::exibirAniversariantes(std::string data_hoje){
   std::cout << "ANIVERSARIANTES DO DIA:\n|";
   
   while(sqlite3_step(stmt) == SQLITE_ROW){
-    std::string nome = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
+    std::string nome = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
     std::cout << nome << " |" << std::endl;
   }
   std::cout << "-------------------------\n";

@@ -9,6 +9,8 @@ int main(){
   std::cout << "Iniciando programa." << std::endl;
   View view;
   Model model;
+  model._clientes.conectarAoBanco();
+  model._estoque.conectarAoBanco();
   Controller controller(view, model);
   controller.run();
   return 0;

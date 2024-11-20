@@ -6,7 +6,8 @@ class Clientes{
     sqlite3* _db;
 
   public:
-    Clientes();   //Conecta com o banco de dados
+    Clientes();
+    void conectarAoBanco();
     void adicionarCliente();
     void exibirAniversariantes(std::string data_hoje);
 };
