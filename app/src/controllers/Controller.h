@@ -2,15 +2,21 @@
 #define CONTROLLER_H
 
 #include "../views/View.h"
-#include "../models/Model.h"
+#include "../models/Cliente.h"
+#include "../models/Clientes.h"
+#include "../models/Estoque.h"
+#include "../models/Roupa.h"
 
 class Controller{
   private:
     View _view;
-    Model _model;
-  
+    Cliente _cliente;
+    Clientes _clientes;
+    Estoque _estoque;
+    Roupa _roupa;
+
   public:
-    Controller(View& view, Model& model);
+    Controller(View& view);
     void run();
 };
 
