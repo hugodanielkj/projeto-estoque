@@ -3,12 +3,17 @@
 #include <iostream>
 #include <string>
 
-Controller::Controller(View& view){ _view = view; }
+Controller::Controller(View& view, Clientes& clientes, Cliente& cliente, Estoque& estoque, Roupa& roupa){
+  _view = view;
+  _clientes = clientes;
+  _cliente = cliente;
+  _estoque = estoque;
+  _roupa  = roupa;
+}
 
 void Controller::run(){
   //Avisar sobre clientes aniversariantes
   _clientes.exibirAniversariantes("14/05/2014");
-  std::cout << "teste" << std::endl;
   int choice;
     do {
       //Controller inicia:
@@ -23,8 +28,14 @@ void Controller::run(){
         break;
       }
       case 2:{
+        std::string nome;
+        _view.showMessage("Coloque o nome do cliente que se quer informacoes: ");
+        std::cin >> nome;
+        //_clientes.exibirInfoCliente(nome);
+      }
+      case 3:{
         std::string nome, tamanho; int quantidade;
-        _view.askForDetails(nome, quantidade, tamanho);   //Seta valores para nome, quantidade, tamanho via terminal
+        _view.askForProductDetails(nome, quantidade, tamanho);   //Seta valores para nome, quantidade, tamanho via terminal
         Roupa roupa(_roupa);
         if(roupa.criarRoupa(nome, quantidade, tamanho) != 0){   //Retorna 0 a nova roupa foi criada
           std::cout << "Nao foi possivel inserir nova roupa." << std::endl;
@@ -35,12 +46,18 @@ void Controller::run(){
         break;
       }
       case 4:{
-        _clientes.exibirAniversariantes("14/05/2014");
+        //Exibe nome, aniversario e contato; Dado o nome do cliente
+        std::string nome, aniversario; long int contato;
+        _view.askForClientsDetails(nome, aniversario, contato);
+        _cliente.setNome(nome);
+        _cliente.setAniversario(aniversario);
+        _cliente.setContato(contato);
+        _clientes.adicionarCliente(_cliente);
         break;
       }
       default:
         break;
       }
 
-    } while (choice != 5);
+    } while (choice != 7);
 }

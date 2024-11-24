@@ -11,11 +11,11 @@ class Estoque{
 
   public:
     Estoque();
-    void conectarAoBanco();
+    Estoque(sqlite3* db);
     void adicionarRoupa(const Roupa roupa);
     void alterarQuantidadeNumaRoupa(const std::string nome, const int valor_a_somar);
     void exibir();
-    void organizar();
+    void exibirPorQuantidade();
 
 };
 

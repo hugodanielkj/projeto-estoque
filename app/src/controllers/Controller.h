@@ -10,13 +10,13 @@
 class Controller{
   private:
     View _view;
-    Cliente _cliente;
     Clientes _clientes;
+    Cliente _cliente;
     Estoque _estoque;
     Roupa _roupa;
 
   public:
-    Controller(View& view);
+    Controller(View& view, Clientes& clientes, Cliente& cliente, Estoque& estoque, Roupa& roupa);
     void run();
 };
 

@@ -3,18 +3,7 @@
 
 Estoque::Estoque(){}
 
-void Estoque::conectarAoBanco(){
-  std::cout << "Preparando para conectar com o estoque..." << std::endl;
-  const std::string DB_PATH = "/home/hugo/projeto-estoque/app/src/data/estoque.db"; 
-
-  int exit = sqlite3_open(DB_PATH.c_str(), &_db);
-  if(exit){
-    std::cerr << "Erro ao abrir banco de dados: " << sqlite3_errmsg(_db) << std::endl;
-    _db = nullptr;
-  } else {
-    std::cout << "Conexao estabelecida com sucesso." << std::endl;
-  }
-}
+Estoque::Estoque(sqlite3* db){ _db = db; }
 
 void Estoque::adicionarRoupa(const Roupa roupa){
   //int id = sqlite3_last_insert_rowid(_db) + 1; (descobrir por que nao funcionava)
@@ -112,4 +101,4 @@ void Estoque::exibir(){
   sqlite3_finalize(stmt);
 }
 
-void Estoque::organizar(){}
+void Estoque::exibirPorQuantidade(){}

@@ -7,7 +7,8 @@ class View{
   public:
     void showMessage(const std::string& message);
     void showMenu();
-    void askForDetails(std::string& nome, int& quantidade, std::string& tamanho);
+    void askForProductDetails(std::string& nome, int& quantidade, std::string& tamanho);
+    void askForClientsDetails(std::string& nome, std::string& aniversario, long int& contato);
 };
 
 #endif // VIEW_H
